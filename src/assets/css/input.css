@@ -1,0 +1,133 @@
+:root {
+  --colorInvalid: #a64244;
+  --colorActive: #a66a42;
+}
+
+/* form starting stylings ------------------------------- */
+.group {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.group input,
+.group select {
+  font-size: 1.1rem;
+  padding: 0.5rem 0.5rem 0.5rem 0.2rem;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 0.01rem solid var(--colorActive);
+}
+.group input:focus,
+.group select:focus {
+  outline: none;
+}
+
+/* LABEL ======================================= */
+.group label {
+  color: #999;
+  font-size: 1rem;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 0.5rem;
+  top: 0.5rem;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+/* active state */
+.group input:focus ~ label,
+.group input:invalid ~ label,
+.group select:focus ~ label,
+.group select:valid ~ label {
+  top: -1.1rem;
+  font-size: 0.9rem;
+  color: var(--colorActive);
+}
+.checkInput ~ label {
+  top: -1.1rem;
+  font-size: 0.9rem;
+  color: var(--colorActive);
+}
+
+/* BOTTOM BARS ================================= */
+.bar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+.bar:before,
+.bar:after {
+  content: "";
+  height: 0.02rem;
+  width: 0px;
+  bottom: 0.01rem;
+  position: absolute;
+  background: var(--colorActive);
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+.bar:before {
+  left: 50%;
+}
+.bar:after {
+  right: 50%;
+}
+
+/* active state */
+.group input:focus ~ .bar:before,
+.group input:focus ~ .bar:after,
+.group select:focus ~ .bar:before,
+.group select:focus ~ .bar:after {
+  width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position: absolute;
+  height: 60%;
+  width: 6rem;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* active state */
+.group input:focus ~ .highlight,
+.group select:focus ~ .highlight {
+  -webkit-animation: inputHighlighter 0.3s ease;
+  -moz-animation: inputHighlighter 0.3s ease;
+  animation: inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from {
+    background: var(--colorActive);
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@-moz-keyframes inputHighlighter {
+  from {
+    background: var(--colorActive);
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@keyframes inputHighlighter {
+  from {
+    background: var(--colorActive);
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
